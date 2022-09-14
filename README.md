@@ -1,13 +1,13 @@
-# react-international-phone-number-input
+# react-international-phone-input
 
-> will be added
+> will add
 
-[![NPM](https://img.shields.io/npm/v/react-international-phone-number-input.svg)](https://www.npmjs.com/package/react-international-phone-number-input) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/react-international-phone-input.svg)](https://www.npmjs.com/package/react-international-phone-input) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
 ```bash
-npm install --save react-international-phone-number-input
+npm install --save react-international-phone-input
 ```
 
 ## Usage
@@ -15,8 +15,8 @@ npm install --save react-international-phone-number-input
 ```tsx
 import React, { Component } from 'react'
 
-import MyComponent from 'react-international-phone-number-input'
-import 'react-international-phone-number-input/dist/index.css'
+import MyComponent from 'react-international-phone-input'
+import 'react-international-phone-input/dist/index.css'
 
 class Example extends Component {
   render() {

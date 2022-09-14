@@ -1,10 +1,24 @@
 import React from 'react'
 
-import { ExampleComponent } from 'react-international-phone-number-input'
-import 'react-international-phone-number-input/dist/index.css'
+import 'react-international-phone-input/dist/index.css'
+import { PhoneInput } from 'react-international-phone-input'
 
 const App = () => {
-  return <ExampleComponent containerClassName={'foo'} />
+  return (
+    <div className=''>
+      <PhoneInput
+        containerProps={{
+          style: {}
+        }}
+        dropdownButtonProps={
+          {
+            // flagWidth: 30,
+            // flagHeight: 30
+          }
+        }
+      />
+    </div>
+  )
 }
 
 export default App

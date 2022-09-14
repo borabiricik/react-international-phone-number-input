@@ -1,5 +1,5 @@
 {
-  "name": "react-international-phone-input-example",
+  "name": "react-international-phone-number-input-example",
   "homepage": ".",
   "version": "0.0.0",
   "private": true,
@@ -21,7 +21,7 @@
     "postcss": "^8.4.16",
     "react": "link:../node_modules/react",
     "react-dom": "link:../node_modules/react-dom",
-    "react-international-phone-input": "link:..",
+    "react-international-phone-number-input": "link:..",
     "react-scripts": "link:../node_modules/react-scripts",
     "tailwindcss": "^3.1.8",
     "typescript": "link:../node_modules/typescript"
