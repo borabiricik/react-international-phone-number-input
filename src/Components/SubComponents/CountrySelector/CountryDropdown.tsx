@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import React from 'react'
 import styled from 'styled-components'
 import { ICountry } from '../../../Types/data'
-import { ICountryItemProps } from '../../../Types/UI'
+import { ICountryItemProps, IFlagProps } from '../../../Types/UI'
 import CountryItem from './CountryItem'
 
 const CountryDropdownContainer = styled.div``
@@ -28,6 +28,7 @@ interface Props {
   handleSelect: Function
   dropdownItemProps: ICountryItemProps
   selectedCountry: ICountry
+  flagProps: IFlagProps
 }
 
 const CountryDropdown = (props: Props) => {
@@ -43,6 +44,7 @@ const CountryDropdown = (props: Props) => {
             {countries.map((country, index) => {
               return (
                 <CountryItem
+                  flagProps={props.flagProps}
                   restDropdownProps={restdropdownItemProps}
                   dropdownItemProps={dropdownItemProps}
                   handleSelect={handleSelect}

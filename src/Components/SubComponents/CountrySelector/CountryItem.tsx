@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { ICountry } from '../../../Types/data'
+import { IFlagProps } from '../../../Types/UI'
 import CountryFlag from './CountryFlag'
 
 const CountryListItem = styled.button`
@@ -10,6 +11,7 @@ const CountryListItem = styled.button`
   align-items: center;
   cursor: pointer;
   width: 100%;
+  padding: 0.5rem 0.25rem;
   transition: all 0.3s;
   :hover {
     background-color: whitesmoke;
@@ -22,6 +24,7 @@ interface Props {
   handleSelect: Function
   index: number
   dropdownItemProps: any
+  flagProps: IFlagProps
 }
 
 const CountryItem = (props: Props) => {
@@ -32,6 +35,7 @@ const CountryItem = (props: Props) => {
       onClick={() => props.handleSelect(props.country)}
     >
       <CountryFlag
+        flagProps={props.flagProps}
         dropdownItemProps={props.dropdownItemProps as any}
         src={props.country.flags.png}
         alt=''

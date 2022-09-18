@@ -7,6 +7,7 @@ import {
   IContainerProps,
   ICountryItemProps,
   ICountrySelectorButtonProps,
+  IFlagProps,
   InputProps,
   IOnChangeProps
 } from './Types/UI'
@@ -18,6 +19,7 @@ interface Props {
   dropdownItemProps?: ICountryItemProps
   onChange?: (props: IOnChangeProps) => void
   defaultCountry?: string
+  flagProps?: IFlagProps
 }
 
 export const PhoneInput = ({
@@ -25,7 +27,8 @@ export const PhoneInput = ({
   inputProps = {},
   dropdownButtonProps = {},
   onChange,
-  defaultCountry
+  defaultCountry,
+  flagProps = { rounded: false }
 }: Props) => {
   const { className: containerClassName, ...restContainerProps } =
     containerProps
@@ -39,6 +42,7 @@ export const PhoneInput = ({
       )}
     >
       <CountrySelector
+        flagProps={flagProps}
         defaultCountry={defaultCountry}
         onChange={onChange}
         dropdownButtonProps={dropdownButtonProps}

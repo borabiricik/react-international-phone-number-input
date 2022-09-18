@@ -1,3 +1,5 @@
+import { HTMLAttributes } from 'react'
+
 export interface IOnChangeProps {
   flagURL: string
   name: string
@@ -24,4 +26,8 @@ export interface ICountryItemProps
   flagWidth?: number
   flagHeight?: number
   characterCount?: number
+}
+
+export interface IFlagProps extends HTMLAttributes<HTMLDivElement> {
+  rounded?: boolean
 }

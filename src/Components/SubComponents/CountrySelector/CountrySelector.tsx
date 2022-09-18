@@ -7,6 +7,7 @@ import {
   ICountryItemProps,
   ICountrySelectorButtonProps,
   ICountrySelectorContainerProps,
+  IFlagProps,
   InputProps,
   IOnChangeProps
 } from '../../../Types/UI'
@@ -19,19 +20,25 @@ const SelectedCountryContainer = styled.div`
   align-items: center;
 `
 
+const DialCode = styled.span`
+  margin-right: 5px;
+`
+
 interface Props {
   dropdownButtonProps?: ICountrySelectorButtonProps
   dropdownItemProps?: ICountryItemProps
   inputProps?: InputProps
   onChange?: (props: IOnChangeProps) => void
   defaultCountry?: string
+  flagProps: IFlagProps
 }
 
 const CountrySelector = ({
   dropdownButtonProps = {},
   dropdownItemProps = {},
   onChange,
-  defaultCountry
+  defaultCountry,
+  flagProps
 }: Props) => {
   const { className, ...restDropdownProps } = dropdownButtonProps
 
@@ -51,7 +58,7 @@ const CountrySelector = ({
     display: flex;
     align-items: center;
   `
-
+  // const { width } = useWindowSize()
   const [dropdownOpen, setdropdownOpen] = useState(false)
   const [countries, setcountries] = useState<Array<ICountry>>([])
   const [isCountriesLoading, setisCountriesLoading] = useState(false)
@@ -124,10 +131,12 @@ const CountrySelector = ({
           {selectedCountry.name.length > 0 ? (
             <SelectedCountryInnerContainer>
               <CountryFlag
+                flagProps={flagProps}
                 dropdownItemProps={dropdownItemProps}
                 src={selectedCountry.flagURL}
               />
-              {selectedCountry.dialCode}
+              <DialCode>{selectedCountry.dialCode}</DialCode>
+              {/* {width > 768 && selectedCountry.name} */}
             </SelectedCountryInnerContainer>
           ) : (
             'select'
@@ -138,6 +147,7 @@ const CountrySelector = ({
       </div>
       {dropdownOpen && (
         <CountryDropdown
+          flagProps={flagProps}
           countries={countries}
           handleSelect={handleSelect}
           selectedCountry={selectedCountry}

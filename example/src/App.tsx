@@ -8,11 +8,14 @@ const App = () => {
     <div className=''>
       <PhoneInput
         containerProps={{}}
-        // defaultCountry='TR'
+        defaultCountry='KW'
         dropdownButtonProps={{
           // flagWidth: 30,
           // flagHeight: 30
-          minWidth: 25
+          minWidth: 20
+        }}
+        flagProps={{
+          rounded: true
         }}
         onChange={(props) => {
           console.log(props)
