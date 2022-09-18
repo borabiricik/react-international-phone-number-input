@@ -1,21 +1,22 @@
 import classNames from 'classnames'
 import * as React from 'react'
 import CountrySelector from './Components/SubComponents/CountrySelector/CountrySelector'
-import Input from './Components/SubComponents/Input/Input'
+import Input, {
+  InputComponentProps
+} from './Components/SubComponents/Input/Input'
 import styles from './styles.module.css'
 import {
   IContainerProps,
   ICountryItemProps,
   ICountrySelectorButtonProps,
   IFlagProps,
-  InputProps,
   IOnChangeProps,
   IOnInputChangeProps
 } from './Types/UI'
 
 interface Props {
   containerProps?: IContainerProps
-  inputProps?: InputProps
+  inputProps?: InputComponentProps
   dropdownButtonProps?: ICountrySelectorButtonProps
   dropdownItemProps?: ICountryItemProps
   onChange?: (props: IOnChangeProps) => void
@@ -23,6 +24,7 @@ interface Props {
   flagProps?: IFlagProps
   onInputChange?: (props: IOnInputChangeProps) => void
   disableCountrySelect?: boolean
+  value?: string | number
 }
 
 export const PhoneInput = ({

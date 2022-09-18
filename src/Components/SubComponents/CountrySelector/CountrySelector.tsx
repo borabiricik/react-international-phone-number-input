@@ -91,7 +91,7 @@ const CountrySelector = ({
   }, [defaultCountry, countries, isCountriesLoading])
 
   const handleClick = () => {
-    setdropdownOpen(!dropdownOpen)
+    if (disableCountrySelect === false) setdropdownOpen(!dropdownOpen)
   }
 
   const handleSelect = (country: ICountry) => {
@@ -122,7 +122,7 @@ const CountrySelector = ({
       }}
       {...restDropdownProps}
     >
-      <div onClick={handleClick}>
+      <div onClick={!disableCountrySelect ? handleClick : () => {}}>
         <SelectedCountryContainer>
           {selectedCountry.name.length > 0 ? (
             <SelectedCountryInnerContainer>
@@ -138,7 +138,7 @@ const CountrySelector = ({
             'select'
           )}
 
-          <ChevronIcon dropdownOpen={dropdownOpen} />
+          {!disableCountrySelect && <ChevronIcon dropdownOpen={dropdownOpen} />}
         </SelectedCountryContainer>
       </div>
       {dropdownOpen && (

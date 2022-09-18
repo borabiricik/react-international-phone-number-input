@@ -17,8 +17,14 @@ const App = () => {
           // flagHeight: 30
           minWidth: 25
         }}
+        disableCountrySelect={true}
         flagProps={{
           rounded: true
+        }}
+        inputProps={{
+          defaultValue: 'deneme',
+          //@ts-ignore
+          value: phoneNumber
         }}
         onInputChange={(values) => {
           console.log(values)
@@ -28,8 +34,8 @@ const App = () => {
         }}
       />
       <p>Dial Code: {dialCode}</p>
-      <p>Dial Code: {phoneNumber}</p>
-      <p>Dial Code: {mergedNumber}</p>
+      <p>Phone Number: {phoneNumber}</p>
+      <p>Dial Code merged to phone number: {mergedNumber}</p>
     </div>
   )
 }

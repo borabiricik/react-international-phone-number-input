@@ -17,7 +17,11 @@ export interface ICountrySelectorContainerProps {
 }
 
 export interface IContainerProps extends React.HTMLAttributes<HTMLDivElement> {}
-export interface InputProps extends React.HTMLAttributes<HTMLInputElement> {}
+export interface InputProps
+  extends React.DetailedHTMLProps<
+    React.InputHTMLAttributes<HTMLInputElement>,
+    HTMLInputElement
+  > {}
 export interface ICountrySelectorButtonProps
   extends React.HTMLAttributes<HTMLDivElement> {
   dropdownButtonColor?: 'string'
