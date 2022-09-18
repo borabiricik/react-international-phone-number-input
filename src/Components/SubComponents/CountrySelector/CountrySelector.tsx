@@ -47,8 +47,8 @@ const CountrySelector = ({
     padding: 0.5rem 1rem;
     cursor: pointer;
     border: none;
-    width: ${(props) => (props.width ? `${props.width}%` : '25%')};
-    min-width: ${(props) => (props.minWidth ? `${props.minWidth}%` : '25%')};
+    width: ${(props) => (props.width ? `${props.width}%` : '')};
+    min-width: ${(props) => (props.minWidth ? `${props.minWidth}%` : '30%')};
     background-color: ${dropdownButtonProps.dropdownButtonColor
       ? dropdownButtonProps.dropdownButtonColor
       : '#eff4f7'};

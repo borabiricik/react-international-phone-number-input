@@ -5,14 +5,14 @@ import { PhoneInput } from 'react-international-phone-input'
 
 const App = () => {
   return (
-    <div className=''>
+    <div style={{ margin: 50, fontSize: 12, width: '330px' }}>
       <PhoneInput
         containerProps={{}}
         defaultCountry='KW'
         dropdownButtonProps={{
           // flagWidth: 30,
           // flagHeight: 30
-          minWidth: 20
+          minWidth: 22
         }}
         flagProps={{
           rounded: true

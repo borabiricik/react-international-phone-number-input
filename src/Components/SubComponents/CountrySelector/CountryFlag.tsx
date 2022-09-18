@@ -1,26 +1,23 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const StyledCountryFlag = styled.div<any>`
+const StyledCountryFlag = styled.img<any>`
   border-radius: ${(props) => {
     return props.flagProps && props.flagProps.rounded ? '50%' : '5px'
   }};
-  width: ${(props: any) => {
+
+  /* width: ${(props: any) => {
     return props.dropdownItemProps.flagWidth
       ? props.dropdownItemProps.flagWidth
-      : '30px'
+      : '24px'
   }};
   height: ${(props: any) => {
     return props.dropdownItemProps.flagHeight
       ? props.dropdownItemProps.flagHeight
-      : '30px'
-  }};
-  background-image: url(${(props) => props.src});
-  background-position: 25% center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-clip: border-box;
-  margin-right: 5px;
+      : '24px'
+  }}; */
+  height: 30px;
+  width: 30px;
 `
 
 const CountryFlag = (props: any) => {
