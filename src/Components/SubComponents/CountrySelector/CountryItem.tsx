@@ -21,10 +21,11 @@ const CountryListItem = styled.button`
 interface Props {
   country: ICountry
   restDropdownProps: any
-  handleSelect: Function
+  handleSelect: ((country: ICountry) => void) | null
   index: number
   dropdownItemProps: any
   flagProps: IFlagProps
+  disableCountrySelect: boolean
 }
 
 const CountryItem = (props: Props) => {
@@ -32,7 +33,11 @@ const CountryItem = (props: Props) => {
     <CountryListItem
       {...props.restDropdownProps}
       key={props.index}
-      onClick={() => props.handleSelect(props.country)}
+      onClick={() =>
+        props.handleSelect &&
+        !props.disableCountrySelect &&
+        props.handleSelect(props.country)
+      }
     >
       <CountryFlag
         flagProps={props.flagProps}

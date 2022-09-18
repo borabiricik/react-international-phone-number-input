@@ -15,6 +15,7 @@ const CountryListContainer = styled.div`
   height: 200px;
   overflow-y: scroll;
   scrollbar-width: 0;
+  background-color: white;
   border: 1px solid #b5b5c3;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -25,10 +26,11 @@ const CountryListContainer = styled.div`
 
 interface Props {
   countries: Array<ICountry>
-  handleSelect: Function
+  handleSelect: ((country: ICountry) => void) | null
   dropdownItemProps: ICountryItemProps
   selectedCountry: ICountry
   flagProps: IFlagProps
+  disableCountrySelect: boolean
 }
 
 const CountryDropdown = (props: Props) => {
@@ -47,9 +49,12 @@ const CountryDropdown = (props: Props) => {
                   flagProps={props.flagProps}
                   restDropdownProps={restdropdownItemProps}
                   dropdownItemProps={dropdownItemProps}
-                  handleSelect={handleSelect}
+                  handleSelect={
+                    !props.disableCountrySelect ? handleSelect : null
+                  }
                   country={country}
                   index={index}
+                  disableCountrySelect={props.disableCountrySelect}
                 />
               )
             })}

@@ -22,6 +22,7 @@ interface Props {
   defaultCountry?: string
   flagProps?: IFlagProps
   onInputChange?: (props: IOnInputChangeProps) => void
+  disableCountrySelect?: boolean
 }
 
 export const PhoneInput = ({
@@ -31,7 +32,8 @@ export const PhoneInput = ({
   onChange,
   onInputChange,
   defaultCountry,
-  flagProps = { rounded: false }
+  flagProps = { rounded: false },
+  disableCountrySelect = false
 }: Props) => {
   const { className: containerClassName, ...restContainerProps } =
     containerProps
@@ -57,6 +59,7 @@ export const PhoneInput = ({
         defaultCountry={defaultCountry}
         onChange={onChange}
         dropdownButtonProps={dropdownButtonProps}
+        disableCountrySelect={disableCountrySelect}
       />
       <Input
         onInputChange={onInputChange}

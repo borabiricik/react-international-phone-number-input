@@ -33,6 +33,7 @@ interface Props {
   flagProps: IFlagProps
   selectedCountry: any
   setselectedCountry: Function
+  disableCountrySelect: boolean
 }
 
 const CountrySelector = ({
@@ -41,7 +42,8 @@ const CountrySelector = ({
   defaultCountry,
   flagProps,
   selectedCountry,
-  setselectedCountry
+  setselectedCountry,
+  disableCountrySelect
 }: Props) => {
   const { className, ...restDropdownProps } = dropdownButtonProps
 
@@ -143,9 +145,10 @@ const CountrySelector = ({
         <CountryDropdown
           flagProps={flagProps}
           countries={countries}
-          handleSelect={handleSelect}
+          handleSelect={!disableCountrySelect ? handleSelect : null}
           selectedCountry={selectedCountry}
           dropdownItemProps={dropdownItemProps}
+          disableCountrySelect={disableCountrySelect}
         />
       )}
     </CountrySelectorContainer>
