@@ -38,7 +38,6 @@ interface Props {
 const CountrySelector = ({
   dropdownButtonProps = {},
   dropdownItemProps = {},
-  onChange,
   defaultCountry,
   flagProps,
   selectedCountry,
@@ -99,12 +98,6 @@ const CountrySelector = ({
       dialCode: country.idd.root + country.idd.suffixes[0],
       flagURL: country.flags.png
     })
-    onChange &&
-      onChange({
-        name: country.name.common,
-        dialCode: country.idd.root + country.idd.suffixes[0],
-        flagURL: country.flags.png
-      })
   }
 
   useEffect(() => {

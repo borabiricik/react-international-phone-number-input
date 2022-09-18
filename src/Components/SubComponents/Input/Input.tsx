@@ -9,15 +9,15 @@ interface InputComponentProps extends InputProps {
 }
 
 const Input = (props: InputComponentProps) => {
-  const { dialCode } = props
+  const { dialCode, onInputChange, ...rest } = props
   return (
     <input
-      {...props}
+      {...rest}
       type='number'
       className={classNames(styles['input-container'])}
       onChange={(e) => {
-        props.onInputChange &&
-          props.onInputChange({ dialCode, phoneNumber: e.target.value })
+        onInputChange &&
+          onInputChange({ dialCode, phoneNumber: e.target.value })
       }}
     />
   )
