@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import logo from './logo.svg'
 import './App.css'
 import { PhoneInput } from 'react-international-phone-number-input'
 import 'react-international-phone-number-input/dist/index.css'
@@ -9,10 +8,18 @@ function App() {
   return (
     <div>
       <PhoneInput
+        containerProps={{}}
         defaultCountry='KW'
+        dropdownButtonProps={{
+          // flagWidth: 30,
+          // flagHeight: 30
+          minWidth: 25
+        }}
+        disableCountrySelect={false}
         flagProps={{
           rounded: true
         }}
+        inputProps={{}}
         onInputChange={(values) => {
           console.log(values)
         }}
