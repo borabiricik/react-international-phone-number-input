@@ -6,13 +6,18 @@ export interface IOnChangeProps {
   dialCode: string
 }
 
+export interface IOnInputChangeProps {
+  dialCode: string
+  phoneNumber: string
+}
+
 export interface ICountrySelectorContainerProps {
   minWidth?: number
   width?: number
 }
 
 export interface IContainerProps extends React.HTMLAttributes<HTMLDivElement> {}
-export interface InputProps extends React.HTMLAttributes<HTMLDivElement> {}
+export interface InputProps extends React.HTMLAttributes<HTMLInputElement> {}
 export interface ICountrySelectorButtonProps
   extends React.HTMLAttributes<HTMLDivElement> {
   dropdownButtonColor?: 'string'

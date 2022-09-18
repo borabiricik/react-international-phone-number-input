@@ -6,7 +6,7 @@ const StyledCountryFlag = styled.img<any>`
     return props.flagProps && props.flagProps.rounded ? '50%' : '5px'
   }};
 
-  /* width: ${(props: any) => {
+  width: ${(props: any) => {
     return props.dropdownItemProps.flagWidth
       ? props.dropdownItemProps.flagWidth
       : '24px'
@@ -15,9 +15,8 @@ const StyledCountryFlag = styled.img<any>`
     return props.dropdownItemProps.flagHeight
       ? props.dropdownItemProps.flagHeight
       : '24px'
-  }}; */
-  height: 30px;
-  width: 30px;
+  }};
+  margin-right: 5px;
 `
 
 const CountryFlag = (props: any) => {

@@ -12,13 +12,16 @@ const App = () => {
         dropdownButtonProps={{
           // flagWidth: 30,
           // flagHeight: 30
-          minWidth: 22
+          minWidth: 25
         }}
         flagProps={{
           rounded: true
         }}
         onChange={(props) => {
           console.log(props)
+        }}
+        onInputChange={(values) => {
+          console.log(values)
         }}
       />
     </div>

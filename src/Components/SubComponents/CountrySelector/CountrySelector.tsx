@@ -31,6 +31,8 @@ interface Props {
   onChange?: (props: IOnChangeProps) => void
   defaultCountry?: string
   flagProps: IFlagProps
+  selectedCountry: any
+  setselectedCountry: Function
 }
 
 const CountrySelector = ({
@@ -38,7 +40,9 @@ const CountrySelector = ({
   dropdownItemProps = {},
   onChange,
   defaultCountry,
-  flagProps
+  flagProps,
+  selectedCountry,
+  setselectedCountry
 }: Props) => {
   const { className, ...restDropdownProps } = dropdownButtonProps
 
@@ -47,6 +51,8 @@ const CountrySelector = ({
     padding: 0.5rem 1rem;
     cursor: pointer;
     border: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
     width: ${(props) => (props.width ? `${props.width}%` : '')};
     min-width: ${(props) => (props.minWidth ? `${props.minWidth}%` : '30%')};
     background-color: ${dropdownButtonProps.dropdownButtonColor
@@ -62,11 +68,6 @@ const CountrySelector = ({
   const [dropdownOpen, setdropdownOpen] = useState(false)
   const [countries, setcountries] = useState<Array<ICountry>>([])
   const [isCountriesLoading, setisCountriesLoading] = useState(false)
-  const [selectedCountry, setselectedCountry] = useState<any>({
-    name: '',
-    dialCode: '',
-    flagURL: ''
-  })
 
   useEffect(() => {
     if (

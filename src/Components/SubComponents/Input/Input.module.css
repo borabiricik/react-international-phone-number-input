@@ -1,4 +1,18 @@
 .input-container {
   border: none;
   width: 100%;
+  outline: none;
+  padding: 0 1rem;
+  border-radius: 10px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type='number'] {
+  -moz-appearance: textfield; /* Firefox */
 }

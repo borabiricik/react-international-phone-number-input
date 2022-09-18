@@ -9,7 +9,8 @@ import {
   ICountrySelectorButtonProps,
   IFlagProps,
   InputProps,
-  IOnChangeProps
+  IOnChangeProps,
+  IOnInputChangeProps
 } from './Types/UI'
 
 interface Props {
@@ -20,6 +21,7 @@ interface Props {
   onChange?: (props: IOnChangeProps) => void
   defaultCountry?: string
   flagProps?: IFlagProps
+  onInputChange?: (props: IOnInputChangeProps) => void
 }
 
 export const PhoneInput = ({
@@ -27,11 +29,18 @@ export const PhoneInput = ({
   inputProps = {},
   dropdownButtonProps = {},
   onChange,
+  onInputChange,
   defaultCountry,
   flagProps = { rounded: false }
 }: Props) => {
   const { className: containerClassName, ...restContainerProps } =
     containerProps
+
+  const [selectedCountry, setselectedCountry] = React.useState<any>({
+    name: '',
+    dialCode: '',
+    flagURL: ''
+  })
 
   return (
     <div
@@ -42,12 +51,18 @@ export const PhoneInput = ({
       )}
     >
       <CountrySelector
+        selectedCountry={selectedCountry}
+        setselectedCountry={setselectedCountry}
         flagProps={flagProps}
         defaultCountry={defaultCountry}
         onChange={onChange}
         dropdownButtonProps={dropdownButtonProps}
       />
-      <Input {...inputProps} />
+      <Input
+        onInputChange={onInputChange}
+        dialCode={selectedCountry.dialCode}
+        {...inputProps}
+      />
     </div>
   )
 }
