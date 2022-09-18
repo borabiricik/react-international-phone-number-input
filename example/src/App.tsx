@@ -7,9 +7,7 @@ const App = () => {
   return (
     <div className=''>
       <PhoneInput
-        containerProps={{
-          style: {}
-        }}
+        containerProps={{}}
         // defaultCountry='TR'
         dropdownButtonProps={{
           // flagWidth: 30,

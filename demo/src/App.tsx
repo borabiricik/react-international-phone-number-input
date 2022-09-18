@@ -6,7 +6,7 @@ function App() {
       <PhoneInput
         defaultCountry='TR'
         containerProps={{
-          className: 'w-1/2',
+          className: 'w-1/3',
           id: 'asd'
         }}
         dropdownButtonProps={{

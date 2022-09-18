@@ -25,4 +25,3 @@ export interface ICountryItemProps
   flagHeight?: number
   characterCount?: number
 }
-export {}

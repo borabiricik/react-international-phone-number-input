@@ -72,8 +72,6 @@ const CountrySelector = ({
         (country) => country.cca2 === defaultCountry.toUpperCase()
       )
       if (foundCountry) {
-        console.log('here')
-        console.log(foundCountry.name)
         setselectedCountry({
           name: foundCountry.name.common,
           dialCode: foundCountry.idd.root + foundCountry.idd.suffixes[0],
@@ -134,7 +132,8 @@ const CountrySelector = ({
           ) : (
             'select'
           )}
-          <ChevronIcon />
+
+          <ChevronIcon dropdownOpen={dropdownOpen} />
         </SelectedCountryContainer>
       </div>
       {dropdownOpen && (
