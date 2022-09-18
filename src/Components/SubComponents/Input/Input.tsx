@@ -9,7 +9,7 @@ export interface InputComponentProps extends InputProps {
 }
 
 const Input = (props: InputComponentProps) => {
-  const { dialCode, onInputChange, ...rest } = props
+  const { dialCode, onInputChange, defaultValue, ...rest } = props
   return (
     <input
       {...rest}

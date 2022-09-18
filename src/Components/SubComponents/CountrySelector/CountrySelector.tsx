@@ -143,6 +143,7 @@ const CountrySelector = ({
       </div>
       {dropdownOpen && (
         <CountryDropdown
+          setDropdownopen={setdropdownOpen}
           flagProps={flagProps}
           countries={countries}
           handleSelect={!disableCountrySelect ? handleSelect : null}

@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { ICountry } from '../../../Types/data'
 import { ICountryItemProps, IFlagProps } from '../../../Types/UI'
@@ -31,6 +31,7 @@ interface Props {
   selectedCountry: ICountry
   flagProps: IFlagProps
   disableCountrySelect: boolean
+  setDropdownopen: Function
 }
 
 const CountryDropdown = (props: Props) => {
@@ -38,32 +39,50 @@ const CountryDropdown = (props: Props) => {
   const { className: dropdownItemClassName, ...restdropdownItemProps } =
     dropdownItemProps
 
+  const dropdownRef = useRef<any>(null)
+
+  useEffect(() => {
+    document.addEventListener('click', handleOutsideClick, true)
+    return () => {
+      document.removeEventListener('click', handleOutsideClick, false)
+    }
+  }, [])
+
+  const handleOutsideClick = (e: any) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+      props.setDropdownopen(false)
+    }
+  }
+
   return (
-    <CountryDropdownContainer className={classNames('dropdown-container')}>
-      <CountryListContainer style={{}}>
-        {countries.length > 0 ? (
-          <React.Fragment>
-            {countries.map((country, index) => {
-              return (
-                <CountryItem
-                  flagProps={props.flagProps}
-                  restDropdownProps={restdropdownItemProps}
-                  dropdownItemProps={dropdownItemProps}
-                  handleSelect={
-                    !props.disableCountrySelect ? handleSelect : null
-                  }
-                  country={country}
-                  index={index}
-                  disableCountrySelect={props.disableCountrySelect}
-                />
-              )
-            })}
-          </React.Fragment>
-        ) : (
-          <div>loading...</div>
-        )}
-      </CountryListContainer>
-    </CountryDropdownContainer>
+    <div ref={dropdownRef}>
+      <CountryDropdownContainer className={classNames('dropdown-container')}>
+        <CountryListContainer style={{}}>
+          {countries.length > 0 ? (
+            <React.Fragment>
+              {countries.map((country, index) => {
+                return (
+                  <CountryItem
+                    key={index}
+                    flagProps={props.flagProps}
+                    restDropdownProps={restdropdownItemProps}
+                    dropdownItemProps={dropdownItemProps}
+                    handleSelect={
+                      !props.disableCountrySelect ? handleSelect : null
+                    }
+                    country={country}
+                    index={index}
+                    disableCountrySelect={props.disableCountrySelect}
+                  />
+                )
+              })}
+            </React.Fragment>
+          ) : (
+            <div>loading...</div>
+          )}
+        </CountryListContainer>
+      </CountryDropdownContainer>
+    </div>
   )
 }
 
