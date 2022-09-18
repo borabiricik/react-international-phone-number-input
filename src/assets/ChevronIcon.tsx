@@ -8,7 +8,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 const IconContainer = styled.div<Props>`
   transition: all 0.3s;
   transform: ${(props) =>
-    props.dropdownOpen ? 'rotate(0deg)' : 'rotate(180deg)'};
+    props.dropdownOpen ? 'rotateY(0deg)' : 'rotateY(180deg)'};
   width: 12px;
   height: 12px;
 `

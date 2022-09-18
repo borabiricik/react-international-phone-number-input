@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
-import 'react-international-phone-input/dist/index.css'
-import { PhoneInput } from 'react-international-phone-input'
+import 'react-international-phone-number-input/dist/index.css'
+import { PhoneInput } from 'react-international-phone-number-input'
 
 const App = () => {
   const [dialCode, setdialCode] = useState('')
@@ -17,7 +17,7 @@ const App = () => {
           // flagHeight: 30
           minWidth: 25
         }}
-        disableCountrySelect={true}
+        disableCountrySelect={false}
         flagProps={{
           rounded: true
         }}

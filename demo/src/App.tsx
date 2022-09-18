@@ -1,19 +1,20 @@
+import React, { useState } from 'react'
+import logo from './logo.svg'
+import './App.css'
 import { PhoneInput } from 'react-international-phone-number-input'
+import 'react-international-phone-number-input/dist/index.css'
 
 function App() {
+  const [deneme, setdeneme] = useState('')
   return (
-    <div style={{ margin: 50 }}>
+    <div>
       <PhoneInput
-        defaultCountry='TR'
-        containerProps={{
-          className: 'w-1/3',
-          id: 'asd'
+        defaultCountry='KW'
+        flagProps={{
+          rounded: true
         }}
-        dropdownButtonProps={{
-          className: 'px-2 border-r-2'
-        }}
-        onChange={(props) => {
-          console.log(props)
+        onInputChange={(values) => {
+          console.log(values)
         }}
       />
     </div>
