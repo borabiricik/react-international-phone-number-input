@@ -1,146 +1,151 @@
-import classNames from 'classnames'
+import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import styles from './CountrySelector.module.css'
-import { ICountryItemProps, ICountrySelectorButtonProps } from '../../..'
-import axios, { AxiosResponse } from 'axios'
+import styled from 'styled-components'
+import ChevronIcon from '../../../assets/ChevronIcon'
+import { ICountry, ICountryData } from '../../../Types/data'
+import {
+  ICountryItemProps,
+  ICountrySelectorButtonProps,
+  ICountrySelectorContainerProps,
+  InputProps,
+  IOnChangeProps
+} from '../../../Types/UI'
+import CountryDropdown from './CountryDropdown'
+import CountryFlag from './CountryFlag'
+
+const SelectedCountryContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
 
 interface Props {
   dropdownButtonProps?: ICountrySelectorButtonProps
   dropdownItemProps?: ICountryItemProps
-}
-
-interface ICountry {
-  name: {
-    common: string
-    official: string
-  }
-  idd: {
-    root: string
-    suffixes: Array<string>
-  }
-  flags: {
-    png: string
-    svg: string
-  }
-}
-
-interface ICountryData extends AxiosResponse {
-  data: ICountry[]
+  inputProps?: InputProps
+  onChange?: (props: IOnChangeProps) => void
+  defaultCountry?: string
 }
 
 const CountrySelector = ({
   dropdownButtonProps = {},
-  dropdownItemProps = {}
+  dropdownItemProps = {},
+  onChange,
+  defaultCountry
 }: Props) => {
   const { className, ...restDropdownProps } = dropdownButtonProps
-  const { className: dropdownItemClassName, ...restdropdownItemProps } =
-    dropdownItemProps
+
+  const CountrySelectorContainer = styled.div<ICountrySelectorContainerProps>`
+    position: relative;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border: none;
+    width: ${(props) => (props.width ? `${props.width}%` : '25%')};
+    min-width: ${(props) => (props.minWidth ? `${props.minWidth}%` : '25%')};
+    background-color: ${dropdownButtonProps.dropdownButtonColor
+      ? dropdownButtonProps.dropdownButtonColor
+      : '#eff4f7'};
+  `
+
+  const SelectedCountryInnerContainer = styled.div`
+    display: flex;
+    align-items: center;
+  `
+
   const [dropdownOpen, setdropdownOpen] = useState(false)
   const [countries, setcountries] = useState<Array<ICountry>>([])
-  const [selectedCountry, setselectedCountry] = useState({
+  const [isCountriesLoading, setisCountriesLoading] = useState(false)
+  const [selectedCountry, setselectedCountry] = useState<any>({
     name: '',
-    dialCode: ''
+    dialCode: '',
+    flagURL: ''
   })
+
+  useEffect(() => {
+    if (
+      !isCountriesLoading &&
+      countries.length > 0 &&
+      defaultCountry &&
+      defaultCountry.length > 0
+    ) {
+      const foundCountry = countries.find(
+        (country) => country.cca2 === defaultCountry.toUpperCase()
+      )
+      if (foundCountry) {
+        console.log('here')
+        console.log(foundCountry.name)
+        setselectedCountry({
+          name: foundCountry.name.common,
+          dialCode: foundCountry.idd.root + foundCountry.idd.suffixes[0],
+          flagURL: foundCountry.flags.png
+        })
+      }
+    }
+  }, [defaultCountry, countries, isCountriesLoading])
+
   const handleClick = () => {
     setdropdownOpen(!dropdownOpen)
   }
 
   const handleSelect = (country: ICountry) => {
-    console.log(country)
     setselectedCountry({
-      name: '',
-      dialCode: ''
+      name: country.name.common,
+      dialCode: country.idd.root + country.idd.suffixes[0],
+      flagURL: country.flags.png
     })
+    onChange &&
+      onChange({
+        name: country.name.common,
+        dialCode: country.idd.root + country.idd.suffixes[0],
+        flagURL: country.flags.png
+      })
   }
 
   useEffect(() => {
+    setisCountriesLoading(true)
     axios
       .get('https://restcountries.com/v3.1/all')
       .then((res: ICountryData) => {
         setcountries(
           res.data.sort((a, b) => a.name.common.localeCompare(b.name.common))
         )
+        setisCountriesLoading(false)
       })
   }, [])
 
   return (
-    <div
-      {...restDropdownProps}
-      className={classNames(
-        styles['country-selector-container'],
-        dropdownButtonProps.dropdownButtonColor
-          ? ''
-          : styles['dropdown-default-background'],
-        className
-      )}
-      style={{
-        backgroundColor: dropdownButtonProps.dropdownButtonColor
-          ? dropdownButtonProps.dropdownButtonColor
-          : '#eff4f7'
+    <CountrySelectorContainer
+      onClick={(e) => {
+        handleClick()
+        dropdownButtonProps.onClick && dropdownButtonProps.onClick(e)
       }}
+      {...restDropdownProps}
     >
       <div onClick={handleClick}>
-        {selectedCountry.name.length > 0 ? selectedCountry.name : 'select'}
+        <SelectedCountryContainer>
+          {selectedCountry.name.length > 0 ? (
+            <SelectedCountryInnerContainer>
+              <CountryFlag
+                dropdownItemProps={dropdownItemProps}
+                src={selectedCountry.flagURL}
+              />
+              {selectedCountry.dialCode}
+            </SelectedCountryInnerContainer>
+          ) : (
+            'select'
+          )}
+          <ChevronIcon />
+        </SelectedCountryContainer>
       </div>
       {dropdownOpen && (
-        <div
-          className={styles['dropdown-container']}
-          style={{
-            position: 'absolute',
-            top: '100%',
-            left: 0,
-            height: '200px',
-            overflowY: 'scroll',
-            scrollbarWidth: 'none'
-          }}
-        >
-          {countries.length > 0 ? (
-            <div>
-              {countries.map((country, index) => {
-                return (
-                  <button
-                    {...restdropdownItemProps}
-                    key={index}
-                    onClick={() => handleSelect(country)}
-                    style={{
-                      display: 'flex',
-                      background: 'transparent',
-                      border: 'none',
-                      alignItems: 'center',
-                      cursor: 'pointer'
-                    }}
-                  >
-                    <img
-                      style={{
-                        width: dropdownItemProps.flagWidth
-                          ? dropdownItemProps.flagWidth
-                          : 20,
-                        height: dropdownItemProps.flagHeight
-                          ? dropdownItemProps.flagHeight
-                          : 20,
-                        objectFit: 'contain',
-                        padding: 5
-                      }}
-                      src={country.flags.png}
-                      alt=''
-                    />
-                    <div>
-                      {dropdownItemProps.characterCount
-                        ? dropdownItemProps.characterCount
-                        : `${country.name.common.slice(0, 7)}${
-                            country.name.common.length > 10 ? '...' : ''
-                          }`}
-                    </div>
-                  </button>
-                )
-              })}
-            </div>
-          ) : (
-            <div>loading...</div>
-          )}
-        </div>
+        <CountryDropdown
+          countries={countries}
+          handleSelect={handleSelect}
+          selectedCountry={selectedCountry}
+          dropdownItemProps={dropdownItemProps}
+        />
       )}
-    </div>
+    </CountrySelectorContainer>
   )
 }
 

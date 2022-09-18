@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 import React from 'react'
-import { InputProps } from '../../..'
+import { InputProps } from '../../../Types/UI'
 import styles from './Input.module.css'
 
 const Input = (props: InputProps) => {

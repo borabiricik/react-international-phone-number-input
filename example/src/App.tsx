@@ -10,12 +10,15 @@ const App = () => {
         containerProps={{
           style: {}
         }}
-        dropdownButtonProps={
-          {
-            // flagWidth: 30,
-            // flagHeight: 30
-          }
-        }
+        // defaultCountry='TR'
+        dropdownButtonProps={{
+          // flagWidth: 30,
+          // flagHeight: 30
+          minWidth: 25
+        }}
+        onChange={(props) => {
+          console.log(props)
+        }}
       />
     </div>
   )
