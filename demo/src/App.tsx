@@ -13,7 +13,8 @@ function App() {
         dropdownButtonProps={{
           // flagWidth: 30,
           // flagHeight: 30
-          minWidth: 25
+          minWidth: 25,
+          className: 'bg-red-200'
         }}
         disableCountrySelect={false}
         flagProps={{

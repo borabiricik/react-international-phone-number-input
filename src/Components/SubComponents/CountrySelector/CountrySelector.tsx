@@ -1,4 +1,5 @@
 import axios from 'axios'
+import classNames from 'classnames'
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import ChevronIcon from '../../../assets/ChevronIcon'
@@ -54,8 +55,8 @@ const CountrySelector = ({
     border: none;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
-    width: ${(props) => (props.width ? `${props.width}%` : '')};
-    min-width: ${(props) => (props.minWidth ? `${props.minWidth}%` : '30%')};
+    /* width: ${(props) => (props.width ? `${props.width}%` : '')};
+    min-width: ${(props) => (props.minWidth ? `${props.minWidth}%` : '30%')}; */
     background-color: ${dropdownButtonProps.dropdownButtonColor
       ? dropdownButtonProps.dropdownButtonColor
       : '#eff4f7'};
@@ -120,6 +121,7 @@ const CountrySelector = ({
         handleClick()
         dropdownButtonProps.onClick && dropdownButtonProps.onClick(e)
       }}
+      className={classNames(className)}
       {...restDropdownProps}
     >
       <div onClick={!disableCountrySelect ? handleClick : () => {}}>

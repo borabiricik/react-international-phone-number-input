@@ -24,7 +24,7 @@ export interface InputProps
   > {}
 export interface ICountrySelectorButtonProps
   extends React.HTMLAttributes<HTMLDivElement> {
-  dropdownButtonColor?: 'string'
+  dropdownButtonColor?: string
   enableDialCode?: boolean
   minWidth?: number
   width?: number
