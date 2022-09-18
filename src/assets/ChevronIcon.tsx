@@ -11,6 +11,7 @@ const IconContainer = styled.svg<Props>`
     props.dropdownOpen ? 'rotate(0deg)' : 'rotate(180deg)'};
   width: 12px;
   height: 12px;
+  margin-left: 1.5rem;
 `
 
 const ChevronIcon = (props: Props) => {
