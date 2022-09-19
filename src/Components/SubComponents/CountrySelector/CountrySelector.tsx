@@ -5,9 +5,9 @@ import styled from 'styled-components'
 import ChevronIcon from '../../../assets/ChevronIcon'
 import { ICountry, ICountryData } from '../../../Types/data'
 import {
+  IContainerProps,
   ICountryItemProps,
   ICountrySelectorButtonProps,
-  ICountrySelectorContainerProps,
   IFlagProps,
   InputProps,
   IOnChangeProps
@@ -25,6 +25,27 @@ const DialCode = styled.span`
   margin-right: 5px;
 `
 
+const CountrySelectorContainer = styled.div<{
+  dropdownProps: ICountrySelectorButtonProps
+  containerProps: IContainerProps
+}>`
+  position: relative;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border: none;
+  border-right: 1px solid
+    ${(props) =>
+      props.containerProps.borderColor
+        ? props.containerProps.borderColor
+        : '#b5b5c3'};
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  background-color: ${(props) =>
+    props.dropdownProps.dropdownButtonColor
+      ? props.dropdownProps.dropdownButtonColor
+      : '#eff4f7'};
+`
+
 interface Props {
   dropdownButtonProps?: ICountrySelectorButtonProps
   dropdownItemProps?: ICountryItemProps
@@ -35,32 +56,20 @@ interface Props {
   selectedCountry: any
   setselectedCountry: Function
   disableCountrySelect: boolean
+  containerProps: IContainerProps
 }
 
 const CountrySelector = ({
   dropdownButtonProps = {},
   dropdownItemProps = {},
+  containerProps = {},
   defaultCountry,
   flagProps,
   selectedCountry,
   setselectedCountry,
   disableCountrySelect
 }: Props) => {
-  const { className, ...restDropdownProps } = dropdownButtonProps
-
-  const CountrySelectorContainer = styled.div<ICountrySelectorContainerProps>`
-    position: relative;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    border: none;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    /* width: ${(props) => (props.width ? `${props.width}%` : '')};
-    min-width: ${(props) => (props.minWidth ? `${props.minWidth}%` : '30%')}; */
-    background-color: ${dropdownButtonProps.dropdownButtonColor
-      ? dropdownButtonProps.dropdownButtonColor
-      : '#eff4f7'};
-  `
+  const { className } = dropdownButtonProps
 
   const SelectedCountryInnerContainer = styled.div`
     display: flex;
@@ -122,7 +131,8 @@ const CountrySelector = ({
         dropdownButtonProps.onClick && dropdownButtonProps.onClick(e)
       }}
       className={classNames(className)}
-      {...restDropdownProps}
+      containerProps={containerProps}
+      dropdownProps={dropdownButtonProps}
     >
       <div onClick={!disableCountrySelect ? handleClick : () => {}}>
         <SelectedCountryContainer>

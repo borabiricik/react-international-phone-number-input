@@ -10,7 +10,10 @@ const App = () => {
   return (
     <div style={{ margin: 50, fontSize: 12, width: '330px' }}>
       <PhoneInput
-        containerProps={{}}
+        containerProps={{
+          //@ts-ignore
+          borderColor: 'red'
+        }}
         defaultCountry='KW'
         dropdownButtonProps={{
           // flagWidth: 30,

@@ -16,7 +16,9 @@ export interface ICountrySelectorContainerProps {
   width?: number
 }
 
-export interface IContainerProps extends React.HTMLAttributes<HTMLDivElement> {}
+export interface IContainerProps extends React.HTMLAttributes<HTMLDivElement> {
+  borderColor?: string
+}
 export interface InputProps
   extends React.DetailedHTMLProps<
     React.InputHTMLAttributes<HTMLInputElement>,

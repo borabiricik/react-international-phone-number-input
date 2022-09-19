@@ -1,10 +1,10 @@
 import classNames from 'classnames'
 import * as React from 'react'
+import styled from 'styled-components'
 import CountrySelector from './Components/SubComponents/CountrySelector/CountrySelector'
 import Input, {
   InputComponentProps
 } from './Components/SubComponents/Input/Input'
-import styles from './styles.module.css'
 import {
   IContainerProps,
   ICountryItemProps,
@@ -27,6 +27,16 @@ interface Props {
   value?: string | number
 }
 
+const AppContainer = styled.div<{ containerProps: IContainerProps }>`
+  display: flex;
+  border: 1px solid
+    ${(props) =>
+      props.containerProps.borderColor
+        ? props.containerProps.borderColor
+        : '#b5b5c3'};
+  border-radius: 5px;
+`
+
 export const PhoneInput = ({
   containerProps = {},
   inputProps = {},
@@ -47,12 +57,10 @@ export const PhoneInput = ({
   })
 
   return (
-    <div
+    <AppContainer
+      containerProps={containerProps}
       {...restContainerProps}
-      className={classNames(
-        containerClassName ? containerClassName : '',
-        styles['container']
-      )}
+      className={classNames(containerClassName ? containerClassName : '')}
     >
       <CountrySelector
         selectedCountry={selectedCountry}
@@ -62,12 +70,13 @@ export const PhoneInput = ({
         onChange={onChange}
         dropdownButtonProps={dropdownButtonProps}
         disableCountrySelect={disableCountrySelect}
+        containerProps={containerProps}
       />
       <Input
         onInputChange={onInputChange}
         dialCode={selectedCountry.dialCode}
         {...inputProps}
       />
-    </div>
+    </AppContainer>
   )
 }
