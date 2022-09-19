@@ -18,6 +18,7 @@ const App = () => {
         dropdownButtonProps={{
           // flagWidth: 30,
           // flagHeight: 30
+          placeholder: 'Country',
           minWidth: 20,
           iconProps: {
             color: 'red',

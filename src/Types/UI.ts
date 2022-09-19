@@ -31,6 +31,7 @@ export interface ICountrySelectorButtonProps
   minWidth?: number
   width?: number
   iconProps?: IIconProps
+  placeholder?: string
 }
 
 export interface IIconProps {

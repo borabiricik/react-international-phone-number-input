@@ -146,8 +146,10 @@ const CountrySelector = ({
               <DialCode>{selectedCountry.dialCode}</DialCode>
               {/* {width > 768 && selectedCountry.name} */}
             </SelectedCountryInnerContainer>
+          ) : dropdownButtonProps.placeholder ? (
+            dropdownButtonProps.placeholder
           ) : (
-            'select'
+            'Select'
           )}
 
           {!disableCountrySelect && (
