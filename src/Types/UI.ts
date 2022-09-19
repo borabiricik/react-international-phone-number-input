@@ -30,6 +30,13 @@ export interface ICountrySelectorButtonProps
   enableDialCode?: boolean
   minWidth?: number
   width?: number
+  iconProps?: IIconProps
+}
+
+export interface IIconProps {
+  width?: number
+  height?: number
+  color?: string
 }
 
 export interface ICountryItemProps

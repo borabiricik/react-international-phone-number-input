@@ -18,7 +18,12 @@ const App = () => {
         dropdownButtonProps={{
           // flagWidth: 30,
           // flagHeight: 30
-          minWidth: 20
+          minWidth: 20,
+          iconProps: {
+            color: 'red',
+            width: 16,
+            height: 16
+          }
         }}
         disableCountrySelect={false}
         flagProps={{

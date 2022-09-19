@@ -150,7 +150,12 @@ const CountrySelector = ({
             'select'
           )}
 
-          {!disableCountrySelect && <ChevronIcon dropdownOpen={dropdownOpen} />}
+          {!disableCountrySelect && (
+            <ChevronIcon
+              iconProps={dropdownButtonProps.iconProps}
+              dropdownOpen={dropdownOpen}
+            />
+          )}
         </SelectedCountryContainer>
       </div>
       {dropdownOpen && (
