@@ -23,7 +23,9 @@ export interface InputProps
   extends React.DetailedHTMLProps<
     React.InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
-  > {}
+  > {
+  testId?: string
+}
 export interface ICountrySelectorButtonProps
   extends React.HTMLAttributes<HTMLDivElement> {
   dropdownButtonColor?: string
@@ -32,6 +34,7 @@ export interface ICountrySelectorButtonProps
   width?: number
   iconProps?: IIconProps
   placeholder?: string
+  testId?: string
 }
 
 export interface IIconProps {

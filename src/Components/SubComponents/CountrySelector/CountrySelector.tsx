@@ -69,7 +69,7 @@ const CountrySelector = ({
   setselectedCountry,
   disableCountrySelect
 }: Props) => {
-  const { className } = dropdownButtonProps
+  const { className, testId, ...restDropdownProps } = dropdownButtonProps
 
   const SelectedCountryInnerContainer = styled.div`
     display: flex;
@@ -130,6 +130,8 @@ const CountrySelector = ({
         handleClick()
         dropdownButtonProps.onClick && dropdownButtonProps.onClick(e)
       }}
+      data-test-id={testId}
+      {...restDropdownProps}
       className={classNames(className)}
       containerProps={containerProps}
       dropdownProps={dropdownButtonProps}

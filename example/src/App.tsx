@@ -24,7 +24,8 @@ const App = () => {
             color: 'red',
             width: 16,
             height: 16
-          }
+          },
+          testId: 'example-test-id'
         }}
         disableCountrySelect={false}
         flagProps={{
@@ -33,7 +34,8 @@ const App = () => {
         inputProps={{
           defaultValue: 'deneme',
           //@ts-ignore
-          value: phoneNumber
+          value: phoneNumber,
+          testId: 'example-test-id-2'
         }}
         onInputChange={(values) => {
           console.log(values)

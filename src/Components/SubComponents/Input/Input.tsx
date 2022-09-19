@@ -9,11 +9,12 @@ export interface InputComponentProps extends InputProps {
 }
 
 const Input = (props: InputComponentProps) => {
-  const { dialCode, onInputChange, defaultValue, ...rest } = props
+  const { dialCode, onInputChange, defaultValue, testId, ...rest } = props
   return (
     <input
       {...rest}
       type='number'
+      data-test-id={testId}
       className={classNames(styles['input-container'])}
       onChange={(e) => {
         onInputChange &&
