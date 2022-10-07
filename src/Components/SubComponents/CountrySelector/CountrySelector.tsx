@@ -46,6 +46,11 @@ const CountrySelectorContainer = styled.div<{
       : '#eff4f7'};
 `
 
+const SelectedCountryInnerContainer = styled.div`
+  display: flex;
+  align-items: center;
+`
+
 interface Props {
   dropdownButtonProps?: ICountrySelectorButtonProps
   dropdownItemProps?: ICountryItemProps
@@ -71,10 +76,6 @@ const CountrySelector = ({
 }: Props) => {
   const { className, testId, ...restDropdownProps } = dropdownButtonProps
 
-  const SelectedCountryInnerContainer = styled.div`
-    display: flex;
-    align-items: center;
-  `
   // const { width } = useWindowSize()
   const [dropdownOpen, setdropdownOpen] = useState(false)
   const [countries, setcountries] = useState<Array<ICountry>>([])

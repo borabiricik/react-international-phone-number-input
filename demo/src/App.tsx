@@ -6,7 +6,7 @@ import 'react-international-phone-number-input/dist/index.css'
 function App() {
   const [deneme, setdeneme] = useState('')
   return (
-    <div>
+    <div style={{ width: 300 }}>
       <PhoneInput
         containerProps={{}}
         defaultCountry='KW'
@@ -16,7 +16,7 @@ function App() {
           minWidth: 25,
           className: 'bg-red-200'
         }}
-        disableCountrySelect={false}
+        disableCountrySelect
         flagProps={{
           rounded: true
         }}
@@ -24,6 +24,7 @@ function App() {
         onInputChange={(values) => {
           console.log(values)
         }}
+        prepend={<div>asdasdadasd</div>}
       />
     </div>
   )

@@ -27,7 +27,7 @@ const App = () => {
           },
           testId: 'example-test-id'
         }}
-        disableCountrySelect={false}
+        disableCountrySelect
         flagProps={{
           rounded: true
         }}
