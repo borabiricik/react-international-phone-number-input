@@ -43,6 +43,7 @@ const App = () => {
           setphoneNumber(values.phoneNumber)
           setmergedNumber(values.dialCode + values.phoneNumber)
         }}
+        prepend={<div>Verify</div>}
       />
       <p>Dial Code: {dialCode}</p>
       <p>Phone Number: {phoneNumber}</p>

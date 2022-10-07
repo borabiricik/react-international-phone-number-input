@@ -25,10 +25,12 @@ interface Props {
   onInputChange?: (props: IOnInputChangeProps) => void
   disableCountrySelect?: boolean
   value?: string | number
+  prepend?: React.ReactElement
 }
 
 const AppContainer = styled.div<{ containerProps: IContainerProps }>`
   display: flex;
+  align-items: center;
   border: 1px solid
     ${(props) =>
       props.containerProps.borderColor
@@ -45,7 +47,8 @@ export const PhoneInput = ({
   onInputChange,
   defaultCountry,
   flagProps = { rounded: false },
-  disableCountrySelect = false
+  disableCountrySelect = false,
+  prepend
 }: Props) => {
   const { className: containerClassName, ...restContainerProps } =
     containerProps
@@ -77,6 +80,7 @@ export const PhoneInput = ({
         dialCode={selectedCountry.dialCode}
         {...inputProps}
       />
+      {prepend && prepend}
     </AppContainer>
   )
 }
