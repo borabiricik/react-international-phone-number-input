@@ -65,5 +65,10 @@
     "react-spring": "^9.5.4",
     "styled-components": "^5.3.5",
     "use-resize-observer": "^9.0.2"
-  }
+  },
+  "keywords": [
+    "international phone number input",
+    "react",
+    "input"
+  ]
 }
