@@ -1,30 +1,85 @@
-# react-international-phone-input
 
-> will add
+# React International Phone Number Input
 
-[![NPM](https://img.shields.io/npm/v/react-international-phone-input.svg)](https://www.npmjs.com/package/react-international-phone-input) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-## Install
 
-```bash
-npm install --save react-international-phone-input
+
+You can access the basic example from that [CodeSandbox Link](https://codesandbox.io/s/j6yuey?file=/src/App.tsx)
+
+
+## Install 
+
+npm:
+```bash 
+npm install react-international-phone-number-input --save
 ```
 
+yarn:
+```bash 
+yarn add react-international-phone-number-input
+```
+
+and add CSS file to your app:
+```bash 
+import 'react-international-phone-number-input/dist/index.css'
+```
+
+
+    
 ## Usage
 
-```tsx
+```javascript
 import React, { Component } from 'react'
-
-import MyComponent from 'react-international-phone-input'
-import 'react-international-phone-input/dist/index.css'
+import { PhoneInput } from 'react-international-phone-number-input'
+import 'react-international-phone-number-input/dist/index.css'
 
 class Example extends Component {
   render() {
-    return <MyComponent />
+    return (
+    <PhoneInput
+        containerProps={{
+            //...props here
+        }}
+        defaultCountry='KW'
+        dropdownButtonProps={{
+        //...props here
+        }}
+        disableCountrySelect
+        flagProps={{
+        //...props here
+        }}
+        inputProps={{
+        //...props here
+        }}
+        onInputChange={(values) => {
+          console.log(values)
+        }}
+        prepend={
+            <div>
+        // prepend react element here
+        </div>
+        }
+      />)
   }
 }
 ```
 
-## License
 
-MIT © [borabiricik](https://github.com/borabiricik)
+
+  
+## Base Features
+
+- RTL Support
+- Open Source
+- Prepend element for use cases
+- CRA & Next.js support
+
+  
+## Support
+
+Feel free to contact me via borabiriciksoftware@gmail.com for any purposes.
+
+  
+### TO-DO
+
+- [x]  Will add 
