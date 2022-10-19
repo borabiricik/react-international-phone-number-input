@@ -1,4 +1,5 @@
 import { HTMLAttributes } from 'react'
+import { InputComponentProps } from '../Components/SubComponents/Input/Input'
 
 export interface IOnChangeProps {
   flagURL: string
@@ -52,4 +53,19 @@ export interface ICountryItemProps
 
 export interface IFlagProps extends HTMLAttributes<HTMLDivElement> {
   rounded?: boolean
+}
+
+
+export interface IPhoneInputProps {
+  containerProps?: IContainerProps
+  inputProps?: InputComponentProps
+  dropdownButtonProps?: ICountrySelectorButtonProps
+  dropdownItemProps?: ICountryItemProps
+  onChange?: (props: IOnChangeProps) => void
+  defaultCountry?: string
+  flagProps?: IFlagProps
+  onInputChange?: (props: IOnInputChangeProps) => void
+  disableCountrySelect?: boolean
+  value?: string | number
+  prepend?: React.ReactElement
 }

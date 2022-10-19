@@ -2,31 +2,8 @@ import classNames from 'classnames'
 import * as React from 'react'
 import styled from 'styled-components'
 import CountrySelector from './Components/SubComponents/CountrySelector/CountrySelector'
-import Input, {
-  InputComponentProps
-} from './Components/SubComponents/Input/Input'
-import {
-  IContainerProps,
-  ICountryItemProps,
-  ICountrySelectorButtonProps,
-  IFlagProps,
-  IOnChangeProps,
-  IOnInputChangeProps
-} from './Types/UI'
-
-export interface IPhoneInputProps {
-  containerProps?: IContainerProps
-  inputProps?: InputComponentProps
-  dropdownButtonProps?: ICountrySelectorButtonProps
-  dropdownItemProps?: ICountryItemProps
-  onChange?: (props: IOnChangeProps) => void
-  defaultCountry?: string
-  flagProps?: IFlagProps
-  onInputChange?: (props: IOnInputChangeProps) => void
-  disableCountrySelect?: boolean
-  value?: string | number
-  prepend?: React.ReactElement
-}
+import Input from './Components/SubComponents/Input/Input'
+import { IContainerProps, IPhoneInputProps } from './Types/UI'
 
 const AppContainer = styled.div<{ containerProps: IContainerProps }>`
   display: flex;
