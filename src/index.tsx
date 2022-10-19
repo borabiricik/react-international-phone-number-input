@@ -14,7 +14,7 @@ import {
   IOnInputChangeProps
 } from './Types/UI'
 
-interface Props {
+export interface IPhoneInputProps {
   containerProps?: IContainerProps
   inputProps?: InputComponentProps
   dropdownButtonProps?: ICountrySelectorButtonProps
@@ -49,7 +49,7 @@ export const PhoneInput = ({
   flagProps = { rounded: false },
   disableCountrySelect = false,
   prepend
-}: Props) => {
+}: IPhoneInputProps) => {
   const { className: containerClassName, ...restContainerProps } =
     containerProps
 
